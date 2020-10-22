@@ -11,6 +11,9 @@
           {{brand.value}}
         </mat-option>
       </mat-select>
+      <mat-error *ngIf="addItemForm.controls.brand.touched && addItemForm.controls.brand.invalid">
+        <span *ngIf="addItemForm.controls.brand.errors.required">This field is mandatory.</span>
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
@@ -20,11 +23,17 @@
           {{type.value}}
         </mat-option>
       </mat-select>
+      <mat-error *ngIf="addItemForm.controls.type.touched && addItemForm.controls.type.invalid">
+        <span *ngIf="addItemForm.controls.type.errors.required">This field is mandatory.</span>
+      </mat-error>
     </mat-form-field><br />
 
     <mat-form-field appearance="fill">
       <mat-label>Amount</mat-label>
       <input matInput type="number" class="example-right-align" formControlName="price">
+      <mat-error *ngIf="addItemForm.controls.price.touched && addItemForm.controls.price.invalid">
+        <span *ngIf="addItemForm.controls.price.errors.required">This field is mandatory.</span>
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field color="accent" appearance="fill">
@@ -32,11 +41,17 @@
       <input matInput [matDatepicker]="picker2" formControlName="expireDate">
       <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
       <mat-datepicker #picker2 color="primary"></mat-datepicker>
+      <mat-error *ngIf="addItemForm.controls.expireDate.touched && addItemForm.controls.expireDate.invalid">
+        <span *ngIf="addItemForm.controls.expireDate.errors.required">This field is mandatory.</span>
+      </mat-error>
     </mat-form-field> <br />
 
     <mat-form-field class="example-full-width" style="width: 100%;">
       <mat-label>Description</mat-label>
       <input matInput formControlName="description" maxlength="256" placeholder="Enter Item Description">
+      <mat-error *ngIf="addItemForm.controls.description.touched && addItemForm.controls.description.invalid">
+        <span *ngIf="addItemForm.controls.description.errors.required">This field is mandatory.</span>
+      </mat-error>
     </mat-form-field> <br />
     <button mat-raised-button color="primary" type="submit">Add</button>
   </form>

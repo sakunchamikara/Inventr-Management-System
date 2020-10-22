@@ -4,29 +4,31 @@ import { AddItemComponent } from './components/add-item/add-item.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LoginComponent } from './components/login/login.component';
 import { ViewItemComponent } from './components/view-item/view-item.component';
+import { RouteGuardService } from './services/route-guard.service';
 
 
 const routes: Routes = [
   {
-    path: "",
-    redirectTo: "login",
-    pathMatch: "full",
-  },
-  {
-    path: "login",
+    path: '',
     component: LoginComponent,
   },
   {
-    path: "system",
+    path: 'login',
+    component: LoginComponent,
+  },
+  {
+    path: 'system',
     component: DashboardComponent,
     children: [
       {
-        path: "addItem",
+        path: 'addItem',
         component: AddItemComponent,
+        canActivate: [RouteGuardService],
       },
       {
-        path: "viewItems",
+        path: 'viewItems',
         component: ViewItemComponent,
+        canActivate: [RouteGuardService],
       },
     ],
   },

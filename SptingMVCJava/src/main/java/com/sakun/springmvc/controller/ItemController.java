@@ -22,10 +22,9 @@ public class ItemController {
 	private ItemService itemService; 
 
 	@PostMapping("/item")
-	public String saveItem(@RequestBody Item item) {
-		System.out.println(item);
+	public Item saveItem(@RequestBody Item item) {
 		itemService.saveItem(item);
-		return "ok";
+		return item;
 	}
 	
 	@GetMapping("/item")

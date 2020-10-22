@@ -13,6 +13,10 @@ mat-drawer-container {
 
 }
 
+.breadcrumb {
+  margin: 20px 100px;
+}
+
 mat-drawer-content {
   padding: 0px;
 }
@@ -32,3 +36,4 @@ mat-drawer-content {
   a {
     font-size: small;
   }
+  

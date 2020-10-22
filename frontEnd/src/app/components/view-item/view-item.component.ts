@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material';
 import { Item } from 'src/app/models/item';
 import { ItemService } from 'src/app/services/item.service';
+import { NotificationComponent } from '../notification/notification.component';
 
 @Component({
   selector: 'app-view-item',
@@ -16,7 +18,7 @@ export class ViewItemComponent implements OnInit {
     'Price',
     'Description',
     'Expired On',
-    'Action'
+    'Action',
   ];
   itemList = new Array<Item>();
   searchedList = new Array<Item>();
@@ -31,7 +33,8 @@ export class ViewItemComponent implements OnInit {
 
   constructor(
     private itemService: ItemService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit() {
@@ -39,7 +42,29 @@ export class ViewItemComponent implements OnInit {
     this.types = this.itemService.types;
     this.viewItems();
     this.setSearchForm();
+  }
 
+  openDialogDeleteConfirmation(id: number) {
+    const dialogRef = this.dialog.open(NotificationComponent, {
+      data: {
+        title: 'Delete Item',
+        message: 'Do you really want to delete the item ?',
+      },
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(`dialog result : ${result}`);
+      if (result === 'true') {
+        this.delete(id);
+      }
+    });
+  }
+  openDialogDeleteResponse() {
+    const dialogRef = this.dialog.open(NotificationComponent, {
+      data: {
+        title: 'Delete Item',
+        message: 'Item deleted successfully !',
+      },
+    });
   }
 
   viewItems() {
@@ -86,10 +111,11 @@ export class ViewItemComponent implements OnInit {
 
   delete(id: number) {
     this.itemService.deleteItem(id).subscribe(
-      data => {
+      (data) => {
         this.viewItems();
+        this.openDialogDeleteResponse();
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );

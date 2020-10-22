@@ -1,8 +1,8 @@
-<h2 mat-dialog-title>Log out</h2>
+<h2 mat-dialog-title>{{data.title}}</h2>
 <mat-dialog-content>
-  {{data.name}} Do you really want to log out ?
+  {{data.message}}
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-button mat-dialog-close mat-dialog-close="true">Keep Me logged in</button>
-  <button mat-button mat-dialog-close mat-dialog-close="false">Log out</button>
+  <button mat-button mat-dialog-close mat-dialog-close="true">Ok</button>
+  <button mat-button mat-dialog-close mat-dialog-close="false">Cancel</button>
 </mat-dialog-actions>

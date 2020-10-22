@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material';
 import { Item } from 'src/app/models/item';
 import { ItemService } from 'src/app/services/item.service';
+import { NotificationComponent } from '../notification/notification.component';
 
 @Component({
   selector: 'app-add-item',
@@ -19,10 +21,10 @@ export class AddItemComponent implements OnInit {
   brands: any;
   types: any;
 
-
   constructor(
     private formBuilder: FormBuilder,
-    private itemService: ItemService
+    private itemService: ItemService,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit() {
@@ -34,6 +36,12 @@ export class AddItemComponent implements OnInit {
       description: [null, [Validators.required]],
       price: [null, [Validators.required]],
       expireDate: [null, [Validators.required]],
+    });
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(NotificationComponent, {
+      data: { title: 'Add Item', message: 'Item Added Successfully !' },
     });
   }
 
@@ -53,13 +61,11 @@ export class AddItemComponent implements OnInit {
 
     this.itemService.create(this.item).subscribe(
       (data) => {
-        console.log(data);
+          this.openDialog();
       },
       (error) => {
         console.log(error);
       }
     );
   }
-
-  
 }

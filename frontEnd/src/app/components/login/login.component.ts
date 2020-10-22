@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
+import { NotificationComponent } from '../notification/notification.component';
 
 @Component({
   selector: 'app-login',
@@ -17,13 +19,32 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
       email: [null, [Validators.required, Validators.pattern(this.emailRegx)]],
       password: [null, Validators.required],
+    });
+  }
+
+  openDialogLoginResponseFalse() {
+    const dialogRef = this.dialog.open(NotificationComponent, {
+      data: {
+        title: 'Login',
+        message: 'Wrong Credentials !',
+      },
+    });
+  }
+
+  openDialogLoginResponseTrue() {
+    const dialogRef = this.dialog.open(NotificationComponent, {
+      data: {
+        title: 'Login',
+        message: 'Login Successful !',
+      },
     });
   }
 
@@ -37,10 +58,11 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.user).subscribe(
       (data) => {
         if (data) {
-          this.router.navigate(['/system']);
+          this.router.navigate(['/system/viewItems']);
           window.sessionStorage.setItem('isUserLoggeIn', 'true');
+          this.openDialogLoginResponseTrue();
         } else {
-          alert(data);
+          this.openDialogLoginResponseFalse();
         }
       },
       (error) => {
