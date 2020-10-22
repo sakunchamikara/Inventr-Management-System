@@ -1,0 +1,30 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>My App</span>
+  <span class="example-spacer"></span>
+
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" (click)="openDialog()">LogOut</button>
+</mat-toolbar>
+
+<mat-drawer-container class="example-container">
+  <mat-drawer mode="side" opened>
+    <mat-nav-list>
+      <mat-card class="profile-card">
+        <mat-card-title>WELCOME SAKUN</mat-card-title>
+        <img mat-card-image
+          src="https://png.pngtree.com/png-clipart/20190924/original/pngtree-business-people-avatar-icon-user-profile-free-vector-png-image_4815126.jpg"
+          alt="Photo of a Shiba Inu">
+      </mat-card>
+
+      <a mat-list-item routerLinkActive="list-item-active" routerLink="/system">Dashboard</a>
+      <a mat-list-item routerLinkActive="list-item-active" routerLink="/system/addItem">Add Item</a>
+      <a mat-list-item routerLinkActive="list-item-active" routerLink="/system/viewItems">View Items</a>
+
+    </mat-nav-list>
+  </mat-drawer>
+  <mat-drawer-content>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>

@@ -1,0 +1,84 @@
+<mat-card class="breadcrumb">
+  View Items
+</mat-card>
+
+<mat-card class="breadcrumb">
+  Search
+  <mat-card-content><br />
+    <form [formGroup]="searchItemForm" (ngSubmit)="submit()">
+      <mat-form-field appearance="fill" class="search">
+        <mat-label>Brand</mat-label>
+        <mat-select formControlName="brand">
+          <mat-option *ngFor="let brand of brands" [value]="brand.value">{{brand.value}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="search">
+        <mat-label>Type</mat-label>
+        <mat-select formControlName="type">
+          <mat-option *ngFor="let type of types" [value]="type.value">{{type.value}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="search">
+        <mat-label>Description</mat-label>
+        <input matInput type="text" class="example-right-align" formControlName="description">
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit" class="search">Search</button>
+      <button mat-raised-button color="primary" type="button" (click)="clear()">Clear</button>
+    </form>
+  </mat-card-content>
+</mat-card>
+
+<table mat-table [dataSource]="itemList" class="mat-elevation-z8" >
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="Id">
+    <th mat-header-cell *matHeaderCellDef> Id </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="Brand">
+    <th mat-header-cell *matHeaderCellDef> Brand </th>
+    <td mat-cell *matCellDef="let element"> {{element.brand}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="Type">
+    <th mat-header-cell *matHeaderCellDef> Type </th>
+    <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Price">
+    <th mat-header-cell *matHeaderCellDef> Price </th>
+    <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="Description">
+    <th mat-header-cell *matHeaderCellDef> Description </th>
+    <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="Expired On">
+    <th mat-header-cell *matHeaderCellDef> Expired On </th>
+    <td mat-cell *matCellDef="let element"> {{element.expireDate |date}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Action">
+    <th mat-header-cell *matHeaderCellDef> Action </th>
+    <td mat-cell *matCellDef="let element"><button mat-icon-button color="warn" type="button" (click)="delete(element.id)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

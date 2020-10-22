@@ -1,0 +1,23 @@
+2020.10.18 22:56:40 INFO  started: Metals version 0.9.4 in workspace 'G:\projects\scicom\Inventr-Management-System' for client vscode.
+2020.10.18 22:56:41 INFO  time: initialize in 0.94s
+2020.10.18 22:56:44 WARN  no build tool detected in workspace 'G:\projects\scicom\Inventr-Management-System'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+2020.10.19 07:32:15 INFO  shutting down Metals
+2020.10.19 07:54:42 INFO  started: Metals version 0.9.4 in workspace 'G:\projects\scicom\Inventr-Management-System' for client vscode.
+2020.10.19 07:54:43 INFO  time: initialize in 1.22s
+2020.10.19 07:54:50 WARN  no build tool detected in workspace 'G:\projects\scicom\Inventr-Management-System'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+Oct 19, 2020 8:05:42 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTraceNotification
+2020.10.19 10:26:02 INFO  shutting down Metals
+2020.10.20 11:40:17 INFO  started: Metals version 0.9.4 in workspace 'G:\projects\scicom\Inventr-Management-System' for client vscode.
+2020.10.20 11:40:19 INFO  time: initialize in 1.05s
+2020.10.20 11:40:24 WARN  no build tool detected in workspace 'G:\projects\scicom\Inventr-Management-System'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+2020.10.21 17:30:56 INFO  shutting down Metals
+2020.10.21 17:35:02 INFO  started: Metals version 0.9.4 in workspace 'G:\projects\scicom\Inventr-Management-System' for client vscode.
+2020.10.21 17:35:04 INFO  time: initialize in 1.98s
+2020.10.21 17:35:15 WARN  no build tool detected in workspace 'G:\projects\scicom\Inventr-Management-System'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+2020.10.22 00:45:54 INFO  shutting down Metals
+2020.10.22 08:45:17 INFO  started: Metals version 0.9.4 in workspace 'G:\projects\scicom\Inventr-Management-System' for client vscode.
+2020.10.22 08:45:19 INFO  time: initialize in 1.79s
+2020.10.22 08:45:26 WARN  no build tool detected in workspace 'G:\projects\scicom\Inventr-Management-System'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+Oct 22, 2020 3:02:07 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTraceNotification
