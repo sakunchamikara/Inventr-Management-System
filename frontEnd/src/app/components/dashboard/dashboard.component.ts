@@ -11,7 +11,7 @@ import { NotificationComponent } from '../notification/notification.component';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(public dialog: MatDialog, private router: Router ,private authService: AuthService) {}
+  constructor(public dialog: MatDialog, private router: Router , private authService: AuthService) {}
 
   ngOnInit() {}
 
@@ -22,7 +22,7 @@ export class DashboardComponent implements OnInit {
     dialogRef.afterClosed().subscribe(
       result => {
         console.log(`dialog result : ${result}`);
-        if(result === 'true') {
+        if (result === 'true') {
           this.authService.logOut();
           this.router.navigate(['/login']);
         }
