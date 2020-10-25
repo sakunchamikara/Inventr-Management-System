@@ -1,15 +1,10 @@
 package com.sakun.springmvc.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.sakun.springmvc.model.Item;
 import com.sakun.springmvc.service.ItemService;
@@ -19,7 +14,12 @@ import com.sakun.springmvc.service.ItemService;
 public class ItemController {
 	
 	@Autowired
-	private ItemService itemService; 
+	private ItemService itemService;
+
+	@GetMapping("/item")
+	public List<Item> getItem() {
+		return itemService.getAll();
+	}
 
 	@PostMapping("/item")
 	public Item saveItem(@RequestBody Item item) {
@@ -27,18 +27,18 @@ public class ItemController {
 		return item;
 	}
 	
-	@GetMapping("/item")
-	public List<Item> getItem() {
-		return itemService.getAll();
-	}
-	
-	@GetMapping("/item/{brand}/{type}/{desc}")
-	public List<Item> getSearchItems(@PathVariable("brand") String brand,@PathVariable("type") String type,@PathVariable("desc") String desc) {
-		return itemService.getSearchedItems(brand,type,desc);
-	}
-	
 	@DeleteMapping("item/{id}")
 	public void deleteItem(@PathVariable int id) {
 		itemService.deleteItem(id);
 	}
+
+
+	@GetMapping("/searchItem")
+	public List<Item> getSearchItem(@RequestParam Map<String, String> param) {
+		String brand = param.get("brand");
+		String type = param.get("type");
+		String desc = param.get("description");
+		return itemService.getSearchedItems(brand,type,desc);
+	}
+
 }

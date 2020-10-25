@@ -11,11 +11,12 @@ import com.sakun.springmvc.model.Item;
 
 @Service
 public class ItemService {
+
 	Date date = new Date();
 	BigDecimal price = new BigDecimal("100");
-	Item item1 = new Item(1,"Samsung","TV",price,"This is a samsung tv", date);
-	Item item2 = new Item(3,"LG","TV",price,"asd", date);
-	Item item3 = new Item(2,"Samsung","Fridge",price,"asd", date);
+	Item item1 = new Item(1,"LG","TV",price,"item description", date);
+	Item item2 = new Item(2,"Samsung","TV",price,"This is a samsung tv", date);
+	Item item3 = new Item(3,"Samsung","Fridge",price,"asd", date);
 	Item item4 = new Item(4,"Abans","Laptop",price,"This is an abans laptop", date);
 	
 	List<Item> list = new ArrayList<Item>();
