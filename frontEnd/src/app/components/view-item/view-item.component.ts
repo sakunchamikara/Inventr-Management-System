@@ -6,24 +6,25 @@ import { ItemService } from 'src/app/services/item.service';
 import { NotificationComponent } from '../notification/notification.component';
 
 @Component({
-  selector: 'app-view-item',
-  templateUrl: './view-item.component.html',
-  styleUrls: ['./view-item.component.scss'],
+  selector: "app-view-item",
+  templateUrl: "./view-item.component.html",
+  styleUrls: ["./view-item.component.scss"],
 })
 export class ViewItemComponent implements OnInit {
   displayedColumns: string[] = [
-    'Id',
-    'Brand',
-    'Type',
-    'Price',
-    'Description',
-    'Expired On',
-    'Action',
+    "Id",
+    "Brand",
+    "Type",
+    "Price",
+    "Description",
+    "Expired On",
+    "Action",
   ];
   itemList = new Array<Item>();
   searchedList = new Array<Item>();
 
   searchItemForm: FormGroup;
+  searchListEmptyFlag = false;
   brand: string;
   type: string;
   description: string;
@@ -38,6 +39,7 @@ export class ViewItemComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.searchListEmptyFlag = false;
     this.brands = this.itemService.brands;
     this.types = this.itemService.types;
     this.viewItems();
@@ -47,13 +49,13 @@ export class ViewItemComponent implements OnInit {
   openDialogDeleteConfirmation(id: number) {
     const dialogRef = this.dialog.open(NotificationComponent, {
       data: {
-        title: 'Delete Item',
-        message: 'Do you really want to delete the item ?',
+        title: "Delete Item",
+        message: "Do you really want to delete the item ?",
       },
     });
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`dialog result : ${result}`);
-      if (result === 'true') {
+      if (result === "true") {
         this.delete(id);
       }
     });
@@ -61,8 +63,17 @@ export class ViewItemComponent implements OnInit {
   openDialogDeleteResponse() {
     const dialogRef = this.dialog.open(NotificationComponent, {
       data: {
-        title: 'Delete Item',
-        message: 'Item deleted successfully !',
+        title: "Delete Item",
+        message: "Item deleted successfully !",
+      },
+    });
+  }
+
+  openDialogSearchListEmpty() {
+    const dialogRef = this.dialog.open(NotificationComponent, {
+      data: {
+        title: "Search List",
+        message: "Search List Empty !",
       },
     });
   }
@@ -91,13 +102,17 @@ export class ViewItemComponent implements OnInit {
       return;
     }
 
-    this.brand = this.searchItemForm.get('brand').value;
-    this.type = this.searchItemForm.get('type').value;
-    this.description = this.searchItemForm.get('description').value;
+    this.brand = this.searchItemForm.get("brand").value;
+    this.type = this.searchItemForm.get("type").value;
+    this.description = this.searchItemForm.get("description").value;
 
     this.itemService.search(this.brand, this.type, this.description).subscribe(
       (data) => {
         this.itemList = data;
+        if (data.length === 0) {
+          this.searchListEmptyFlag = true;
+          this.openDialogSearchListEmpty();
+        }
       },
       (error) => {
         console.log(error);

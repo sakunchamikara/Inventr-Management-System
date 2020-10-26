@@ -24,3 +24,4 @@ INFO: Unsupported notification method: $/setTraceNotification
 2020.10.25 13:40:32 INFO  started: Metals version 0.9.4 in workspace 'G:\projects\scicom\Inventr-Management-System' for client vscode.
 2020.10.25 13:40:34 INFO  time: initialize in 3s
 2020.10.25 13:40:48 WARN  no build tool detected in workspace 'G:\projects\scicom\Inventr-Management-System'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+2020.10.26 10:03:15 INFO  shutting down Metals

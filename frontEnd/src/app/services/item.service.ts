@@ -1,16 +1,16 @@
-import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
-import { Item } from "../models/item";
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Item } from '../models/item';
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
 export class ItemService {
-  private baseUrl = "http://localhost:8080/SptingMVCJava";
+  private baseUrl = 'http://localhost:8080/SptingMVCJava';
 
-  brands = [{ value: "Samsung" }, { value: "LG" }, { value: "Abans" }];
-  types = [{ value: "Fridge" }, { value: "TV" }, { value: "Laptop" }];
+  brands = [{ value: 'Samsung' }, { value: 'LG' }, { value: 'Abans' }];
+  types = [{ value: 'Fridge' }, { value: 'TV' }, { value: 'Laptop' }];
 
   constructor(private httpClient: HttpClient) {}
 

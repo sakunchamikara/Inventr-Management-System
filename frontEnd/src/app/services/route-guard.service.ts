@@ -22,7 +22,7 @@ export class RouteGuardService implements CanActivate {
     if (this.authservice.isUserLoggeIn()) {
       return true;
     }
-    this.router.navigate(['system/login']);
+    this.router.navigate(['/login']);
     return false;
   }
 }
