@@ -30,7 +30,7 @@
 
     <mat-form-field appearance="fill">
       <mat-label>Amount in USD</mat-label>
-      <input matInput type="number" class="example-right-align" formControlName="price">
+      <input matInput type="number" class="example-right-align" [min]="1" formControlName="price">
       <mat-error *ngIf="addItemForm.controls.price.touched && addItemForm.controls.price.invalid">
         <span *ngIf="addItemForm.controls.price.errors.required">This field is mandatory.</span>
       </mat-error>
@@ -38,9 +38,10 @@
 
     <mat-form-field color="accent" appearance="fill">
       <mat-label>Expired On</mat-label>
-      <input matInput [matDatepicker]="picker2" formControlName="expireDate">
+      <input matInput readonly [matDatepicker]="picker2" [min]="minDate" formControlName="expireDate" >
       <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-      <mat-datepicker #picker2 color="primary"></mat-datepicker>
+      <mat-datepicker #picker2 color="primary" ></mat-datepicker>
+
       <mat-error *ngIf="addItemForm.controls.expireDate.touched && addItemForm.controls.expireDate.invalid">
         <span *ngIf="addItemForm.controls.expireDate.errors.required">This field is mandatory.</span>
       </mat-error>
@@ -53,6 +54,7 @@
         <span *ngIf="addItemForm.controls.description.errors.required">This field is mandatory.</span>
       </mat-error>
     </mat-form-field> <br />
-    <button mat-raised-button color="primary" type="submit">Add</button>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="addItemForm.invalid">Add</button>
   </form>
 </mat-card>

@@ -21,6 +21,7 @@ export class AddItemComponent implements OnInit {
   brands: any;
   types: any;
 
+  minDate: Date;
   constructor(
     private formBuilder: FormBuilder,
     private itemService: ItemService,
@@ -30,6 +31,7 @@ export class AddItemComponent implements OnInit {
   ngOnInit() {
     this.brands = this.itemService.brands;
     this.types = this.itemService.types;
+    this.minDate = new Date();
     this.addItemForm = this.formBuilder.group({
       brand: [null, [Validators.required]],
       type: [null, [Validators.required]],
@@ -61,7 +63,7 @@ export class AddItemComponent implements OnInit {
 
     this.itemService.create(this.item).subscribe(
       (data) => {
-          this.openDialog();
+        this.openDialog();
       },
       (error) => {
         console.log(error);

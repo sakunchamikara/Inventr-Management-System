@@ -23,12 +23,12 @@ const routes: Routes = [
       {
         path: 'addItem',
         component: AddItemComponent,
-        canActivate: [RouteGuardService],
+        // canActivate: [RouteGuardService],
       },
       {
         path: 'viewItems',
         component: ViewItemComponent,
-        canActivate: [RouteGuardService],
+        // canActivate: [RouteGuardService],
       },
     ],
   },
