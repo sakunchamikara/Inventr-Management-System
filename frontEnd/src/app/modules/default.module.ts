@@ -16,6 +16,7 @@ import {
   MatPaginatorModule,
   MatSelectModule,
   MatSidenavModule,
+  MatSortModule,
   MatTableModule,
   MatToolbarModule,
 } from '@angular/material';
@@ -52,7 +53,8 @@ import { PaginationComponent } from '../components/pagination/pagination.compone
     MatNativeDateModule,
     MatTableModule,
     MatDialogModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatSortModule
   ],
 })
 export class DefaultModule {}

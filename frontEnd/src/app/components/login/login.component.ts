@@ -58,7 +58,10 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.user).subscribe(
       (data) => {
         if (data) {
-          this.router.navigate(['/system/viewItems']);
+          this.router.navigate([
+            '/system/viewItems'],
+            { skipLocationChange: true },
+          );
           window.sessionStorage.setItem('isUserLoggeIn', 'true');
           this.openDialogLoginResponseTrue();
         } else {
