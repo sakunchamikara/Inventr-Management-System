@@ -34,17 +34,15 @@
         </mat-error>
       </mat-form-field>
 
-      <button mat-raised-button color="primary" type="submit" class="search">Search</button>
+      <button mat-raised-button color="primary" type="submit" class="search"
+        [disabled]="searchItemForm.invalid">Search</button>
       <button mat-raised-button color="primary" type="button" (click)="clear()">Clear</button>
     </form>
   </mat-card-content>
 </mat-card>
 
-<table mat-table [dataSource]="itemList" class="mat-elevation-z8" *ngIf="!searchListEmptyFlag">
 
-  <!--- Note that these columns can be defined in any order.
-        The actual rendered columns are set as a property on the row definition" -->
-
+<table mat-table [dataSource]="dataSource"  *ngIf="!searchListEmptyFlag">
   <!-- Position Column -->
   <ng-container matColumnDef="Id">
     <th mat-header-cell *matHeaderCellDef> Id </th>
@@ -82,7 +80,8 @@
 
   <ng-container matColumnDef="Action">
     <th mat-header-cell *matHeaderCellDef> Action </th>
-    <td mat-cell *matCellDef="let element"><button mat-icon-button color="warn" type="button" (click)="openDialogDeleteConfirmation(element.id)">
+    <td mat-cell *matCellDef="let element"><button mat-icon-button color="warn" type="button"
+        (click)="openDialogDeleteConfirmation(element.id)">
         <mat-icon>delete</mat-icon>
       </button>
     </td>
@@ -92,3 +91,5 @@
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
 </table>
+
+<mat-paginator class="paginator" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>

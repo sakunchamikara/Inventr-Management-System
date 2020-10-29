@@ -13,6 +13,7 @@ import {
   MatInputModule,
   MatListModule,
   MatNativeDateModule,
+  MatPaginatorModule,
   MatSelectModule,
   MatSidenavModule,
   MatTableModule,
@@ -22,6 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ViewItemComponent } from '../components/view-item/view-item.component';
 import { NotificationComponent } from '../components/notification/notification.component';
+import { PaginationComponent } from '../components/pagination/pagination.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,7 @@ import { NotificationComponent } from '../components/notification/notification.c
     AddItemComponent,
     ViewItemComponent,
     NotificationComponent,
+    PaginationComponent
   ],
   entryComponents: [NotificationComponent],
   imports: [
@@ -49,6 +52,7 @@ import { NotificationComponent } from '../components/notification/notification.c
     MatNativeDateModule,
     MatTableModule,
     MatDialogModule,
+    MatPaginatorModule
   ],
 })
 export class DefaultModule {}

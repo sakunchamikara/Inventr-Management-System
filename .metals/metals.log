@@ -25,3 +25,23 @@ INFO: Unsupported notification method: $/setTraceNotification
 2020.10.25 13:40:34 INFO  time: initialize in 3s
 2020.10.25 13:40:48 WARN  no build tool detected in workspace 'G:\projects\scicom\Inventr-Management-System'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
 2020.10.26 10:03:15 INFO  shutting down Metals
+2020.10.26 10:10:07 INFO  started: Metals version 0.9.4 in workspace 'G:\projects\scicom\Inventr-Management-System' for client vscode.
+2020.10.26 10:10:08 INFO  time: initialize in 0.71s
+2020.10.26 10:10:14 WARN  no build tool detected in workspace 'G:\projects\scicom\Inventr-Management-System'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+Oct 26, 2020 10:11:33 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTraceNotification
+Oct 26, 2020 1:57:50 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTraceNotification
+2020.10.27 00:17:38 INFO  shutting down Metals
+2020.10.27 15:17:24 INFO  started: Metals version 0.9.4 in workspace 'G:\projects\scicom\Inventr-Management-System' for client vscode.
+2020.10.27 15:17:25 INFO  time: initialize in 0.94s
+2020.10.27 15:17:27 WARN  no build tool detected in workspace 'G:\projects\scicom\Inventr-Management-System'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+Oct 27, 2020 3:20:34 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTraceNotification
+2020.10.28 20:23:37 INFO  started: Metals version 0.9.4 in workspace 'G:\projects\scicom\Inventr-Management-System' for client vscode.
+2020.10.28 20:23:42 INFO  time: initialize in 5.21s
+2020.10.28 20:23:59 WARN  no build tool detected in workspace 'G:\projects\scicom\Inventr-Management-System'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+Oct 28, 2020 11:04:27 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTraceNotification
+Oct 29, 2020 8:58:31 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTraceNotification

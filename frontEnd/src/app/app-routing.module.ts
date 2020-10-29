@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AddItemComponent } from './components/add-item/add-item.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LoginComponent } from './components/login/login.component';
+import { PaginationComponent } from './components/pagination/pagination.component';
 import { ViewItemComponent } from './components/view-item/view-item.component';
 import { RouteGuardService } from './services/route-guard.service';
 
@@ -23,13 +24,17 @@ const routes: Routes = [
       {
         path: 'addItem',
         component: AddItemComponent,
-        // canActivate: [RouteGuardService],
+        canActivate: [RouteGuardService],
       },
       {
         path: 'viewItems',
         component: ViewItemComponent,
-        // canActivate: [RouteGuardService],
+        canActivate: [RouteGuardService],
       },
+      {
+        path: 'pagination',
+        component: PaginationComponent
+      }
     ],
   },
 ];
