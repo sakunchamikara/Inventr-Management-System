@@ -1,15 +1,15 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from "@angular/core";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { MatDialog, MatPaginator, MatSort } from "@angular/material";
-import { Item } from "src/app/models/item";
-import { ItemService } from "src/app/services/item.service";
-import { NotificationComponent } from "../notification/notification.component";
-import { MatTableDataSource } from "@angular/material/table";
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog, MatPaginator, MatSort } from '@angular/material';
+import { Item } from 'src/app/models/item';
+import { ItemService } from 'src/app/services/item.service';
+import { NotificationComponent } from '../notification/notification.component';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
-  selector: "app-view-item",
-  templateUrl: "./view-item.component.html",
-  styleUrls: ["./view-item.component.scss"],
+  selector: 'app-view-item',
+  templateUrl: './view-item.component.html',
+  styleUrls: ['./view-item.component.scss'],
 })
 export class ViewItemComponent implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
@@ -17,13 +17,13 @@ export class ViewItemComponent implements AfterViewInit, OnInit {
 
   dataSource: MatTableDataSource<Item>;
   displayedColumns: string[] = [
-    "Id",
-    "Brand",
-    "Type",
-    "Price",
-    "Description",
-    "Expired On",
-    "Action",
+    'Id',
+    'Brand',
+    'Type',
+    'Price',
+    'Description',
+    'Expired On',
+    'Action',
   ];
   itemList = new Array<Item>();
   searchedList = new Array<Item>();
@@ -46,7 +46,7 @@ export class ViewItemComponent implements AfterViewInit, OnInit {
   }
 
   ngAfterViewInit() {
-    this.dataSource.sort = this.sort;
+    // this.dataSource.sort = this.sort;
   }
 
   ngOnInit() {
@@ -59,13 +59,13 @@ export class ViewItemComponent implements AfterViewInit, OnInit {
   openDialogDeleteConfirmation(id: number) {
     const dialogRef = this.dialog.open(NotificationComponent, {
       data: {
-        title: "Delete Item",
-        message: "Do you really want to delete the item ?",
+        title: 'Delete Item',
+        message: 'Do you really want to delete the item ?',
       },
     });
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`dialog result : ${result}`);
-      if (result === "true") {
+      if (result === 'true') {
         this.delete(id);
       }
     });
@@ -73,8 +73,8 @@ export class ViewItemComponent implements AfterViewInit, OnInit {
   openDialogDeleteResponse() {
     const dialogRef = this.dialog.open(NotificationComponent, {
       data: {
-        title: "Delete Item",
-        message: "Item deleted successfully !",
+        title: 'Delete Item',
+        message: 'Item deleted successfully !',
       },
     });
   }
@@ -82,8 +82,8 @@ export class ViewItemComponent implements AfterViewInit, OnInit {
   openDialogSearchListEmpty() {
     const dialogRef = this.dialog.open(NotificationComponent, {
       data: {
-        title: "Search List",
-        message: "Search List Empty !",
+        title: 'Search List',
+        message: 'Search List Empty !',
       },
     });
   }
@@ -114,13 +114,15 @@ export class ViewItemComponent implements AfterViewInit, OnInit {
       return;
     }
 
-    this.brand = this.searchItemForm.get("brand").value;
-    this.type = this.searchItemForm.get("type").value;
-    this.description = this.searchItemForm.get("description").value;
+    this.brand = this.searchItemForm.get('brand').value;
+    this.type = this.searchItemForm.get('type').value;
+    this.description = this.searchItemForm.get('description').value;
 
     this.itemService.search(this.brand, this.type, this.description).subscribe(
       (data) => {
         this.itemList = data;
+        this.dataSource = new MatTableDataSource(this.itemList);
+        this.dataSource.paginator = this.paginator;
         if (data.length === 0) {
           this.searchListEmptyFlag = true;
           this.openDialogSearchListEmpty();
@@ -134,6 +136,7 @@ export class ViewItemComponent implements AfterViewInit, OnInit {
 
   clear() {
     this.ngOnInit();
+    this.viewItems();
   }
 
   delete(id: number) {

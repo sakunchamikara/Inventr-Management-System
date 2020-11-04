@@ -24,7 +24,7 @@ export class DashboardComponent implements OnInit {
         console.log(`dialog result : ${result}`);
         if (result === 'true') {
           this.authService.logOut();
-          this.router.navigate(['/login']);
+          this.router.navigate(['/login'], { skipLocationChange: true });
         }
       }
     );
